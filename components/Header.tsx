@@ -8,7 +8,6 @@ import {
 } from './Header.elements';
 import Image from 'next/image';
 import { FaHome } from 'react-icons/fa';
-import Button from './Button';
 
 function Header() {
   return (
@@ -29,8 +28,6 @@ function Header() {
               <FaHome />
             </MenuItemLink>
           </MenuItem>
-          <Button color='#9A00ED' text='xd' />
-          <Button color='#BE87D7' text='jaja' />
         </Menu>
       </Wrapper>
     </Navbar>
