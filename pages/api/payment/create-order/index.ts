@@ -2,7 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-const [PAYPAL, PAYPAL_CLIENT_ID, PAYPAL_SECRET] = process.env;
+const PAYPAL = process.env.PAYPAL;
+const CLIENT_ID = process.env.CLIENT_ID;
+const PAYPAL_SECRET = process.env.PAYPAL_SECRET;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { url, method, body } = req;
