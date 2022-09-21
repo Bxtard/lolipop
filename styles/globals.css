@@ -1,3 +1,39 @@
+@import './bootstrap.min.css';
+
+.pricing {
+  background: rgb(73, 181, 231);
+  background: linear-gradient(
+    0deg,
+    rgba(73, 181, 231, 1) 0%,
+    rgba(149, 11, 226, 1) 13%,
+    rgba(29, 28, 5, 1) 50%
+  );
+  height: 100vh;
+}
+
+.full {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blur {
+  padding: 60px;
+  border-radius: 30px;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+.back {
+  background-image: url('https://res.cloudinary.com/dcwcyu4gi/image/upload/v1663684177/wallpaperflare.com_wallpaper_aeuytr.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*
 html,
 body {
   padding: 0;
@@ -24,3 +60,4 @@ a {
     background: black;
   }
 }
+ */
