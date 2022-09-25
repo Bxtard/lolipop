@@ -4,7 +4,7 @@ export default function VideoPlayer() {
   return (
     <MuxPlayer
       streamType='on-demand'
-      playbackId='kjiuwEZRUKK1kbl3xkqRSeGaXHUh4nv1YDXA845UHFU'
+      playbackId='cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8'
       metadata={{
         video_id: 'video-id-54321',
         video_title: 'Test video title',

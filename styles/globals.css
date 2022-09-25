@@ -22,6 +22,18 @@ li {
   height: 100vh;
 }
 
+.videoPage {
+  height: 100vh;
+}
+
+.videoPlayer {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .full {
   height: 100vh;
   display: flex;

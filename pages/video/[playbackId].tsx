@@ -2,9 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Navbar from '../components/Navbar';
-import Card from '../components/Card';
-import videos from '../videos';
+import Navbar from '../../components/Navbar';
+import VideoPlayer from '../../components/VideoPlayer';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -26,23 +25,11 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
+      <main className='videoPage'>
         <Navbar />
-        {session?.user ? (
-          <>
-            <ul className='container wrapper'>
-              {videos?.map((video, index) => {
-                return (
-                  <li key={index} className=''>
-                    <Card video={video} />
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : (
-          <></>
-        )}
+        <div className='videoPlayer'>
+          <VideoPlayer />
+        </div>
       </main>
     </>
   );
