@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import VideoPlayer from '../components/VideoPlayer';
 import Navbar from '../components/Navbar';
+import Card from '../components/Card';
+import AddVideo from '../components/AddVideo';
+import videos from '../videos';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -28,18 +31,18 @@ const Home: NextPage = () => {
 
       <main>
         <Navbar />
-        {session ? (
-          <div className='container'>
-            <h1>{session.user?.name}</h1>
-            <p>{session.user?.email}</p>
-            <Image
-              src={session.user?.image || ''}
-              width={100}
-              height={100}
-              alt={'userImage'}
-            />
-            <VideoPlayer />
-          </div>
+        {session?.user ? (
+          <>
+            <ul className='container wrapper'>
+              {videos?.map((video, index) => {
+                return (
+                  <li key={index} className=''>
+                    <Card video={video} />
+                  </li>
+                );
+              })}
+            </ul>
+          </>
         ) : (
           <></>
         )}

@@ -1,12 +1,16 @@
+import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 const PAYPAL = process.env.PAYPAL;
-const CLIENT_ID = process.env.CLIENT_ID;
+const PAYPAL_CLIENT_ID = process.env.CLIENT_ID;
 const PAYPAL_SECRET = process.env.PAYPAL_SECRET;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { url, method, body } = req;
   console.log(method, url, body);
 
@@ -23,7 +27,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     ],
     application_context: {
       brand_name: 'lolipop',
-      landing_page: 'LOGIN',
+      landing_page: 'NO_PREFERENCE',
       user_action: 'PAY_NOW',
       return_url: 'http://localhost:3000/api/payment/capture-order',
       cancel_url: 'http://localhost:3000/api/payment/cancel-order',
@@ -32,20 +36,29 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   switch (method) {
     case 'GET':
-      const token = async () => {
-        const response = await fetch(`${PAYPAL}/v1/oauth2/token`, {
-          method: 'POST',
+      const params = new URLSearchParams();
+      params.append('grant_type', 'client_credentials');
+
+      const {
+        data: { access_token },
+      } = await axios.post(
+        'https://api-m.sandbox.paypal.com/v1/oauth2/token',
+        params,
+        {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-        });
-        return response;
-      };
+          auth: {
+            username: PAYPAL_CLIENT_ID || '',
+            password: PAYPAL_SECRET || '',
+          },
+        }
+      );
       const createOrder = async () => {
         const response = await fetch(`${PAYPAL}/v2/checkout/orders`, {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${access_token}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(order),

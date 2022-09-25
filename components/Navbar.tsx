@@ -37,7 +37,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className='d-flex'>
-            <button className='btn btn-danger' onClick={() => signOut()}>
+            <button className='btn btn-danger logout' onClick={() => signOut()}>
               logout
             </button>
             <Image
