@@ -3,10 +3,17 @@ import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/Navbar';
-import VideoPlayer from '../../components/VideoPlayer';
+import MuxPlayer from '@mux/mux-player-react';
 
-const Home: NextPage = () => {
+const VideoPlayerPage: NextPage = () => {
   const router = useRouter();
+  const storedVideo = localStorage.getItem('video');
+
+  if (!storedVideo) {
+    router.push('/');
+  }
+  const video = JSON.parse(storedVideo || '{}');
+
   const { data: session, status } = useSession();
 
   if (status === 'loading') {
@@ -28,11 +35,18 @@ const Home: NextPage = () => {
       <main className='videoPage'>
         <Navbar />
         <div className='videoPlayer'>
-          <VideoPlayer />
+          <MuxPlayer
+            style={{ width: '80%' }}
+            streamType='on-demand'
+            playbackId='cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8'
+            title={video.name}
+          />
+          <h1>{video.name}</h1>
+          <p>{video.description}</p>
         </div>
       </main>
     </>
   );
 };
 
-export default Home;
+export default VideoPlayerPage;

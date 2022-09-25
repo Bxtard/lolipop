@@ -40,12 +40,18 @@ const Navbar = () => {
             <button className='btn btn-danger logout' onClick={() => signOut()}>
               logout
             </button>
-            <Image
-              src={session?.user?.image || ''}
-              height={40}
-              width={40}
-              alt={'logo'}
-            />
+            <button
+              className='profileImage'
+              onClick={() => router.push('/profile')}
+            >
+              <Image
+                src={session?.user?.image || ''}
+                height={35}
+                width={35}
+                layout='fixed'
+                alt={'logo'}
+              />
+            </button>
           </div>
         </div>
       </div>

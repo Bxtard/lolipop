@@ -1,12 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-const video = {
-  id: 1,
-  name: 'Pirates of the caribean',
-  img: '',
-};
-
 const colors = [
   'primary',
   'secondary',
@@ -34,11 +28,11 @@ function Card(props: Props) {
   const { video } = props;
 
   const handleClick = () => {
+    localStorage.setItem('video', JSON.stringify(video));
     router.push(`/video/${video.playbackId}`);
   };
 
   const i = Math.floor(Math.random() * 8);
-  console.log(i);
   return (
     <div className={`card bg-${colors[i]} border-${colors[i]} cardx`}>
       <Image src={video.image} alt='poster' height={300} width={220} />

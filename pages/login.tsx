@@ -1,6 +1,8 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-function Login() {
+
+const Login: NextPage = () => {
   const router = useRouter();
   return (
     <>
@@ -31,7 +33,7 @@ function Login() {
       </main>
     </>
   );
-}
+};
 
 export default Login;
 
