@@ -8,7 +8,12 @@ import { useEffect, useState } from 'react';
 
 const VideoPlayerPage: NextPage = () => {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-  const [video, setVideo] = useState({});
+  const [video, setVideo] = useState({
+    name: '',
+    playbackId: '',
+    description: '',
+    image: '',
+  });
   const router = useRouter();
   const { playbackId } = router.query;
 
@@ -49,7 +54,7 @@ const VideoPlayerPage: NextPage = () => {
       <main className='videoPage'>
         <Navbar />
         <div className='videoPlayer'>
-          {video ? (
+          {playbackId ? (
             <>
               <MuxPlayer
                 style={{ width: '80%' }}
