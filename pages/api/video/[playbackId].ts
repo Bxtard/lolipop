@@ -12,12 +12,17 @@ export default async function handler(
 
   switch (method) {
     case 'GET':
-      const videos = await prisma.video.findFirst({
-        where: {
-          playbackId: query.playbackId,
-        },
-      });
-      return res.json(videos);
+      const playbackId = query.playbackId;
+      if (typeof playbackId === 'string') {
+        const videos = await prisma.video.findFirst({
+          where: {
+            playbackId: playbackId,
+          },
+        });
+        return res.json(videos);
+      } else {
+        return res.status(400).json({ message: 'bad request' });
+      }
     default:
       return res.status(405).json({ message: 'Invalid method' });
   }
