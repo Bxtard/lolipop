@@ -4,17 +4,31 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/Navbar';
 import MuxPlayer from '@mux/mux-player-react';
+import { useEffect, useState } from 'react';
 
 const VideoPlayerPage: NextPage = () => {
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const [video, setVideo] = useState({});
   const router = useRouter();
-  const storedVideo = localStorage.getItem('video');
+  const { playbackId } = router.query;
 
-  if (!storedVideo) {
-    router.push('/');
-  }
-  const video = JSON.parse(storedVideo || '{}');
+  const { status } = useSession();
 
-  const { data: session, status } = useSession();
+  const fetchData = async () => {
+    const response = await fetch(`${BASE_URL}api/video/${playbackId}`);
+    const temp = await response.json();
+    setVideo(temp);
+    console.log(temp);
+  };
+
+  useEffect(() => {
+    if (playbackId) {
+      console.log(playbackId);
+      fetchData();
+    }
+
+    return () => {};
+  }, [playbackId]);
 
   if (status === 'loading') {
     return <></>;
@@ -35,14 +49,20 @@ const VideoPlayerPage: NextPage = () => {
       <main className='videoPage'>
         <Navbar />
         <div className='videoPlayer'>
-          <MuxPlayer
-            style={{ width: '80%' }}
-            streamType='on-demand'
-            playbackId='cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8'
-            title={video.name}
-          />
-          <h1>{video.name}</h1>
-          <p>{video.description}</p>
+          {video ? (
+            <>
+              <MuxPlayer
+                style={{ width: '80%' }}
+                streamType='on-demand'
+                playbackId={video.playbackId}
+                title={video.name}
+              />
+              <h1>{video.name}</h1>
+              <p>{video.description}</p>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </main>
     </>

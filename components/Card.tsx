@@ -28,7 +28,6 @@ function Card(props: Props) {
   const { video } = props;
 
   const handleClick = () => {
-    localStorage.setItem('video', JSON.stringify(video));
     router.push(`/video/${video.playbackId}`);
   };
 

@@ -2,10 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import VideoPlayer from '../components/VideoPlayer';
 import Navbar from '../components/Navbar';
 
-const Home: NextPage = () => {
+const Pricing: NextPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
@@ -116,4 +115,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Pricing;

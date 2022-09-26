@@ -1,5 +1,7 @@
 import { NextPage } from 'next';
 
-const profile: NextPage = () => {
+const Profile: NextPage = () => {
   return <></>;
 };
+
+export default Profile;

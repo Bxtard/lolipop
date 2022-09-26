@@ -1,37 +1,5 @@
 const videos = [
   {
-    name: 'Harry Potter',
-    image:
-      'https://res.cloudinary.com/dcwcyu4gi/image/upload/v1664072332/posters/posterharrypotter.jpg_zww41y.webp',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam error commodi quibusdam eveniet, quasi sapiente quae consequuntur fuga ex doloremque illum accusamus pariatur reprehenderit. Nulla maxime porro adipisci excepturi eveniet!',
-    playbackId: 'cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8',
-  },
-  {
-    name: 'Captain America',
-    image:
-      'https://res.cloudinary.com/dcwcyu4gi/image/upload/v1664072332/posters/poster-civilwar.jpg_e2xor2.webp',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, nemo?',
-    playbackId: 'cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8',
-  },
-  {
-    name: 'Pirates of the caribean',
-    image:
-      'https://res.cloudinary.com/dcwcyu4gi/image/upload/v1664072330/posters/poster-piratasdelcaribe5.jpg_bo35wc.webp',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, nemo?',
-    playbackId: 'cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8',
-  },
-  {
-    name: 'Patema inverted',
-    image:
-      'https://res.cloudinary.com/dcwcyu4gi/image/upload/v1664072330/posters/mejores-peliculas-de-animacion-japonesas-patema-inverted_k1ovxb.jpg',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, nemo?',
-    playbackId: 'cFhfcxddnJB6s3sTmOMy00vetWzj4NXaXgcZLB94pB024.m3u8',
-  },
-  {
     name: 'Justice League',
     image:
       'https://res.cloudinary.com/dcwcyu4gi/image/upload/v1664072330/posters/Poster2-691x1024_aixms0.jpg',

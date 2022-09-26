@@ -1,14 +1,27 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Card from '../components/Card';
-import videos from '../videos';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`api/video`);
+      const temp = await response.json();
+      setVideos(temp);
+      console.log(temp);
+    };
+    return () => {
+      fetchData();
+    };
+  }, []);
 
   if (status === 'loading') {
     return <></>;
