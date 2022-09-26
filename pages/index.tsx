@@ -11,16 +11,14 @@ const Home: NextPage = () => {
   const { data: session, status } = useSession();
   const [videos, setVideos] = useState([]);
 
+  const fetchData = async () => {
+    const response = await fetch(`api/video`);
+    const temp = await response.json();
+    setVideos(temp);
+    console.log(temp);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`api/video`);
-      const temp = await response.json();
-      setVideos(temp);
-      console.log(temp);
-    };
-    return () => {
-      fetchData();
-    };
+    fetchData();
   }, []);
 
   if (status === 'loading') {
