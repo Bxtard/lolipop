@@ -1,4 +1,4 @@
-@import './bootstrap.min (1).css';
+@import './bootstrap.min.css';
 
 li {
   list-style: none;
@@ -26,7 +26,7 @@ li {
 }
 
 .videoPage {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .videoPlayer {

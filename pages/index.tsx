@@ -41,10 +41,10 @@ const Home: NextPage = () => {
         <Navbar />
         {session?.user ? (
           <>
-            <ul className='container wrapper'>
+            <ul className='container wrapper videoPage'>
               {videos?.map((video, index) => {
                 return (
-                  <li key={index} className=''>
+                  <li key={index}>
                     <Card video={video} />
                   </li>
                 );
